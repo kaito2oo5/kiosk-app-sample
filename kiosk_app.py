@@ -34,6 +34,8 @@ class KioskApp:
         self.root.title(APP_TITLE)
         self.root.attributes("-fullscreen", True)
         self.root.configure(bg="#1f2937")
+        # ウィンドウを閉じる操作（Alt+F4 / ×）でも管理者PINを必須にする
+        self.root.protocol("WM_DELETE_WINDOW", self.try_exit)
         self._idle_job = None
 
         # ページ切り替えボタン
